@@ -1,277 +1,368 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Design</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #ece9e6, #ffffff);
-            margin: 0;
-            padding: 0;
-        }
-        .gridcontainer {
-            display: grid;
-            grid-template-rows: auto 70px auto;
-            grid-gap: 15px;
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 12px;
-            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
-        }
-        .timercontainer {
-            background-color: #2c3e50; /* Dark grey-blue */
-            color: #fff;
-            padding: 20px;
-            font-size: 24pt;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: bold;
-        }
-        .datescontainer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 20pt;
-            background-color: #f8f9fa;
-            border: 3px solid #34495e; /* Darker grey-blue */
-            border-radius: 8px;
-            padding: 10px;
-        }
-        .dates {
-            flex: 1;
-            text-align: center;
-        }
-        #previous, #next {
-            padding: 10px 20px;
-            font-size: 18pt;
-            background-color: #2980b9; /* Medium blue */
-            color: white;
-            border: 2px solid #444;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            outline: none;
-        }
-        #previous:hover, #next:hover {
-            background-color: #1f6391; /* Darker blue */
-            transform: scale(1.05);
-        }
-        #previous:focus, #next:focus {
-            border: 2px solid #000;
-        }
-        .prayercontainer, .timescontainer {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-gap: 20px;
-            font-size: 22pt;
-            margin-top: 20px;
-        }
-        .prayer, .time {
-            padding: 20px;
-            background-color: #e9ecef;
-            border: 3px solid #adb5bd;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: bold;
-            color: #333;
-        }
-        .sunmooncontainer {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-gap: 20px;
-            text-align: center;
-            padding: 20px;
-            background-color: #f1f3f4;
-            border-radius: 12px;
-            border: 4px solid #34495e;
-            box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
-            margin: 30px auto;
-            max-width: 700px;
-            font-size: 22pt;
-        }
-        .time {
-            font-size: 22pt;
-            font-weight: bold;
-            color: #495057;
-        }
-        .prayer {
-            color: #007bff;
-            font-weight: bold;
-        }
-        .accessible-outline {
-            border: 2px dashed #000;
-        }
+<html>
+    <head>
+        <title></title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(to right, #ece9e6, #ffffff);
+        margin: 0;
+        padding: 0;
+    }
+
+    .gridcontainer {
+        display: grid;
+        grid-template-rows: auto 70px auto;
+        grid-gap: 15px;
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .timercontainer {
+        background-color: #2c3e50; /* Dark grey-blue */
+        color: #fff;
+        padding: 20px;
+        font-size: 24pt;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .datescontainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 20pt;
+        background-color: #f8f9fa;
+        border: 3px solid #34495e; /* Darker grey-blue */
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    .dates {
+        flex: 1;
+        text-align: center;
+    }
+
+    #previous,
+    #next {
+        padding: 10px 20px;
+        font-size: 18pt;
+        background-color: #2980b9; /* Medium blue */
+        color: white;
+        border: 2px solid #444;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        outline: none;
+    }
+
+    #previous:hover,
+    #next:hover {
+        background-color: #1f6391; /* Darker blue */
+        transform: scale(1.05);
+    }
+
+    #previous:focus,
+    #next:focus {
+        border: 2px solid #000;
+    }
+
+    .prayercontainer,
+    .timescontainer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+        font-size: 22pt;
+        margin-top: 20px;
+    }
+
+    .prayer,
+    .time {
+        padding: 20px;
+        background-color: #e9ecef;
+        border: 3px solid #adb5bd;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .sunmooncontainer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+        text-align: center;
+        padding: 20px;
+        background-color: #f1f3f4;
+        border-radius: 12px;
+        border: 4px solid #34495e;
+        box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+        margin: 30px auto;
+        max-width: 700px;
+        font-size: 22pt;
+    }
+
+    .time {
+        font-size: 22pt;
+        font-weight: bold;
+        color: #495057;
+    }
+
+    .prayer {
+        color: #007bff;
+        font-weight: bold;
+    }
+
+    .accessible-outline {
+        border: 2px dashed #000;
+    }
+
+    .inputcontainer {
+        background-color: #fff; /* White background */
+        padding: 20px; /* Padding around the content */
+        border-radius: 12px; /* Increased border-radius for consistency */
+        box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1); /* Match shadow style */
+        width: 100%; /* Full width */
+        max-width: 800px; /* Maximum width */
+        margin: 30px auto; /* Center the container with vertical spacing */
+    }
+
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px; /* Adjust gap to match other containers */
+        margin-bottom: 20px; /* Increased margin for spacing */
+    }
+
+    .form-row div {
+        flex: 1; /* Flex grow to fill space */
+        min-width: 150px; /* Minimum width for input fields */
+    }
+
+    label {
+        display: block; /* Block display for labels */
+        margin-bottom: 8px; /* Adjust margin for better spacing */
+        font-weight: bold; /* Bold font for labels */
+        font-size: 18pt; /* Font size to match the page */
+        color: #333; /* Darker color for better contrast */
+    }
+
+    input,
+    select,
+    .calc {
+        width: 100%; /* Full width */
+        padding: 12px; /* Increased padding for better usability */
+        border: 1px solid #ccc; /* Border color */
+        border-radius: 8px; /* Match rounded corners */
+        box-sizing: border-box; /* Include padding and border in width */
+        font-size: 18pt; /* Font size for better readability */
+        color: #495057; /* Darker text color */
+        background-color: #f8f9fa; /* Light grey background for inputs */
+    }
+
+    input:focus,
+    select:focus {
+        border-color: #2980b9; /* Change border color on focus */
+        outline: none; /* Remove default outline */
+        box-shadow: 0 0 5px rgba(41, 128, 185, 0.5); /* Subtle shadow on focus */
+    }
+
+    .calc {
+        background-color: #2980b9; /* Button color */
+        color: white; /* Button text color */
+        border: none; /* Remove border */
+        cursor: pointer; /* Pointer cursor */
+        font-size: 18pt; /* Font size for buttons */
+        transition: background-color 0.3s ease; /* Smooth background color transition */
+    }
+
+    .calc:hover {
+        background-color: #1f6391; /* Darker blue on hover */
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .timercontainer,
+        .sunmooncontainer,
         .inputcontainer {
-            background-color: #fff; /* White background */
-            padding: 20px; /* Padding around the content */
-            border-radius: 12px; /* Increased border-radius for consistency */
-            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1); /* Match shadow style */
-            width: 100%; /* Full width */
-            max-width: 800px; /* Maximum width */
-            margin: 30px auto; /* Center the container with vertical spacing */
+            font-size: 18pt; /* Decrease font size for smaller screens */
         }
-        .form-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px; /* Adjust gap to match other containers */
-            margin-bottom: 20px; /* Increased margin for spacing */
+
+        .datescontainer {
+            flex-direction: column; /* Stack items vertically */
+            font-size: 16pt; /* Decrease font size */
         }
-        .form-row div {
-            flex: 1; /* Flex grow to fill space */
-            min-width: 150px; /* Minimum width for input fields */
+
+        .prayercontainer,
+        .timescontainer {
+            grid-template-columns: 1fr; /* Stack items vertically */
+            font-size: 18pt; /* Decrease font size */
         }
+
+        #previous, #next {
+            font-size: 16pt; /* Decrease button font size */
+            padding: 8px 16px; /* Decrease padding */
+        }
+
         label {
-            display: block; /* Block display for labels */
-            margin-bottom: 8px; /* Adjust margin for better spacing */
-            font-weight: bold; /* Bold font for labels */
-            font-size: 18pt; /* Font size to match the page */
-            color: #333; /* Darker color for better contrast */
+            font-size: 16pt; /* Decrease label font size */
         }
+
         input, select, .calc {
-            width: 100%; /* Full width */
-            padding: 12px; /* Increased padding for better usability */
-            border: 1px solid #ccc; /* Border color */
-            border-radius: 8px; /* Match rounded corners */
-            box-sizing: border-box; /* Include padding and border in width */
-            font-size: 18pt; /* Font size for better readability */
-            color: #495057; /* Darker text color */
-            background-color: #f8f9fa; /* Light grey background for inputs */
+            font-size: 16pt; /* Decrease input font size */
         }
-        input:focus, select:focus {
-            border-color: #2980b9; /* Change border color on focus */
-            outline: none; /* Remove default outline */
-            box-shadow: 0 0 5px rgba(41, 128, 185, 0.5); /* Subtle shadow on focus */
-        }
-        .calc {
-            background-color: #2980b9; /* Button color */
-            color: white; /* Button text color */
-            border: none; /* Remove border */
-            cursor: pointer; /* Pointer cursor */
-            font-size: 18pt; /* Font size for buttons */
-            transition: background-color 0.3s ease; /* Smooth background color transition */
-        }
-        .calc:hover {
-            background-color: #1f6391; /* Darker blue on hover */
+    }
+
+    @media (max-width: 480px) {
+        .timercontainer,
+        .sunmooncontainer,
+        .inputcontainer {
+            font-size: 16pt; /* Further decrease font size */
         }
 
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .prayercontainer, .timescontainer, .sunmooncontainer {
-                grid-template-columns: 1fr; /* Single column layout for smaller screens */
-            }
-            .gridcontainer {
-                padding: 10px; /* Reduced padding for smaller screens */
-            }
-            .timercontainer {
-                font-size: 20pt; /* Smaller font size */
-            }
-            .datescontainer {
-                flex-direction: column; /* Stack buttons and dates */
-                align-items: flex-start; /* Align items to the start */
-            }
-            #previous, #next {
-                width: 100%; /* Full width buttons */
-                margin-bottom: 10px; /* Space between buttons */
-            }
+        .datescontainer {
+            font-size: 14pt; /* Further decrease font size */
         }
 
-        @media (max-width: 480px) {
-            body {
-                font-size: 14pt; /* Smaller font size for mobile */
-            }
-            label {
-                font-size: 16pt; /* Smaller label size */
-            }
-            input, select, .calc {
-                font-size: 16pt; /* Smaller input size */
-            }
-            .datescontainer {
-                font-size: 18pt; /* Smaller date size */
-            }
-            .gridcontainer {
-                margin: 15px; /* Reduced margin for small screens */
-                padding: 15px; /* Reduced padding for small screens */
-            }
+        .prayercontainer,
+        .timescontainer {
+            font-size: 16pt; /* Further decrease font size */
         }
-    </style>
-    <script src="https://unpkg.com/praytimess"></script>
-    <script src="https://unpkg.com/sunmoontimes"></script>
-</head>
-<body>
-    <div class="inputcontainer">
-        <div class="form-row">
-            <div>
-                <label for="latitude">Latitude</label>
-                <input type="number" id="latitude" name="latitude" step="any">
+
+        #previous, #next {
+            font-size: 14pt; /* Further decrease button font size */
+            padding: 6px 12px; /* Further decrease padding */
+        }
+
+        label {
+            font-size: 14pt; /* Further decrease label font size */
+        }
+
+        input, select, .calc {
+            font-size: 14pt; /* Further decrease input font size */
+        }
+    }
+</style>
+
+        <script src="praytimes.js"></script>
+        <script src="sunMoonTimes.js"></script> 
+    </head>
+    <body>
+        <div class="inputcontainer">
+            <div class="form-row">
+                <div>
+                    <label for="latitude">Latitude</label>
+                    <input type="number" id="latitude" name="latitude" step="any">
+                </div>
+                <div>
+                    <label for="longitude">Longitude</label>
+                    <input type="number" id="longitude" name="longitude" step="any">
+                </div>
+                <div>
+                    <label for="timezone">Timezone</label>
+                    <select id="timezone" name="timezone">
+                        <option value="-12">UTC-12</option>
+                        <option value="-11">UTC-11</option>
+                        <option value="-10">UTC-10</option>
+                        <option value="-9">UTC-9</option>
+                        <option value="-8">UTC-8</option>
+                        <option value="-7">UTC-7</option>
+                        <option value="-6">UTC-6</option>
+                        <option value="-5">UTC-5</option>
+                        <option value="-4">UTC-4</option>
+                        <option value="-3">UTC-3</option>
+                        <option value="-2">UTC-2</option>
+                        <option value="-1">UTC-1</option>
+                        <option value="0">UTC 0 (GMT)</option>
+                        <option value="+1">UTC+1</option>
+                        <option value="+2">UTC+2</option>
+                        <option value="+3">UTC+3</option>
+                        <option value="+4">UTC+4</option>
+                        <option value="+5">UTC+5</option>
+                        <option value="+6">UTC+6</option>
+                        <option value="+7">UTC+7</option>
+                        <option value="+8">UTC+8</option>
+                        <option value="+9">UTC+9</option>
+                        <option value="+10">UTC+10</option>
+                        <option value="+11">UTC+11</option>
+                        <option value="+12">UTC+12</option>
+                        <option value="+13">UTC+13</option>
+                        <option value="+14">UTC+14</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="time-format">Time Format</label>
+                    <select id="time-format" name="time-format">
+                        <option value="24h">24-hour</option>
+                        <option value="12h">12-hour</option>
+                        <option value="12hNS">12-hour no suffix</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="methods">Calculation Method</label>
+                    <select id="methods" name="methods">
+                        <option value="MWL">Muslim World League (MWL)</option>
+                        <option value="ISNA">Islamic Society of North America (ISNA)</option>
+                        <option value="Egypt">Egyptian General Authority of Survey</option>
+                        <option value="Makkah">Umm Al-Qura University, Makkah</option>
+                        <option value="Karachi">University of Islamic Sciences, Karachi</option>
+                        <option value="Tehran">Institute of Geophysics, University of Tehran</option>
+                        <option value="Jafari">Shia Ithna-Ashari, Leva Institute, Qum</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="button" class="calc" id="calc">Calculate</button>
+                </div>
             </div>
-            <div>
-                <label for="longitude">Longitude</label>
-                <input type="number" id="longitude" name="longitude" step="any">
+        </div>
+
+        <!--output-->
+        <div class="gridcontainer">
+            <div class="timercontainer accessible-outline">
+                <div id="nextPrayer"></div>
             </div>
-            <div>
-                <label for="timezone">Timezone</label>
-                <select id="timezone" name="timezone">
-                    <option value="-12">UTC-12</option>
-                    <option value="-11">UTC-11</option>
-                    <option value="-10">UTC-10</option>
-                    <option value="-9">UTC-9</option>
-                    <option value="-8">UTC-8</option>
-                    <option value="-7">UTC-7</option>
-                    <option value="-6">UTC-6</option>
-                    <option value="-5">UTC-5</option>
-                    <option value="-4">UTC-4</option>
-                    <option value="-3">UTC-3</option>
-                    <option value="-2">UTC-2</option>
-                    <option value="-1">UTC-1</option>
-                    <option value="0" selected>UTC+0</option>
-                    <option value="1">UTC+1</option>
-                    <option value="2">UTC+2</option>
-                    <option value="3">UTC+3</option>
-                    <option value="4">UTC+4</option>
-                    <option value="5">UTC+5</option>
-                    <option value="6">UTC+6</option>
-                    <option value="7">UTC+7</option>
-                    <option value="8">UTC+8</option>
-                    <option value="9">UTC+9</option>
-                    <option value="10">UTC+10</option>
-                    <option value="11">UTC+11</option>
-                    <option value="12">UTC+12</option>
-                </select>
+            <div class="datescontainer">
+                <button id="previous" onclick="previous()">Previous Day</button>
+                <div class="dates">
+                    <div id="hijri"></div>
+                    <div id="gregory"></div>
+                </div>
+                <button id="next" onclick="next()">Next Day</button>
+            </div>
+            
+            <div class="prayercontainer">
+                <div class="prayer">Fajr</div>
+                <div class="time" id="fajr"></div>
+                <div class="prayer">Sunrise</div>
+                <div class="time" id="sunrise"></div>
+                <div class="prayer">Dhuhr</div>
+                <div class="time" id="dhuhr"></div>
+                <div class="prayer">Asr</div>
+                <div class="time" id="asr"></div>
+                <div class="prayer">Maghrib</div>
+                <div class="time" id="maghrib"></div>
+                <div class="prayer">Isha</div>
+                <div class="time" id="isha"></div>
+                <div class="prayer">Midnight</div>
+                <div class="time" id="midnight"></div>
             </div>
         </div>
-        <button class="calc" id="calculate">Calculate</button>
-    </div>
-    <div class="gridcontainer">
-        <div class="timercontainer" id="timer">00:00:00</div>
-        <div class="datescontainer">
-            <div class="dates" id="prevDate">Previous Date</div>
-            <button id="previous">Previous</button>
-            <div class="dates" id="nextDate">Next Date</div>
-            <button id="next">Next</button>
+    
+        <div class="sunmooncontainer accessible-outline">
+            <div class="prayer">Sunrise</div>
+            <div class="time" id="sunris"></div>
+            <div class="prayer">Sunset</div>
+            <div class="time" id="sunset"></div>
+            <div class="prayer">Moonrise</div>
+            <div class="time" id="moonrise"></div>
+            <div class="prayer">Moonset</div>
+            <div class="time" id="moonset"></div>
         </div>
-        <div class="prayercontainer">
-            <div class="prayer">Fajr</div>
-            <div class="time" id="fajrTime">05:00 AM</div>
-            <div class="prayer">Dhuhr</div>
-            <div class="time" id="dhuhrTime">12:00 PM</div>
-            <div class="prayer">Asr</div>
-            <div class="time" id="asrTime">03:00 PM</div>
-            <div class="prayer">Maghrib</div>
-            <div class="time" id="maghribTime">06:00 PM</div>
-            <div class="prayer">Isha</div>
-            <div class="time" id="ishaTime">08:00 PM</div>
-        </div>
-        <div class="sunmooncontainer">
-            <div class="time" id="sunriseTime">Sunrise: 06:00 AM</div>
-            <div class="time" id="sunsetTime">Sunset: 06:00 PM</div>
-            <div class="time" id="moonriseTime">Moonrise: 07:00 PM</div>
-            <div class="time" id="moonsetTime">Moonset: 07:00 AM</div>
-        </div>
-    </div>
 
         <script>
             var date = new Date();
