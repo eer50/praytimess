@@ -284,26 +284,28 @@
             var currentDate = new Date(); // Keep track of the current date for the timer
         
             function updateTimes(date) {
-                function getIslamicMonthName(d = new Date()) {
-            return [,"Muharram", "Safar", "Rabi' al-Awwal", "Rabi' al-Thani",
-                     "Jumada al-Awwal", "Jumada al-Thani", "Rajab", "Sha'ban", 
-                     "Ramadan", "Shawwal", "Dhu al-Qi'dah", "Dhu al-Hijjah"]
-                   [d.toLocaleString('en-u-ca-islamic-umalqura', {month: 'numeric'})];
-        }
+                function updateTimes(date) {
+    function getIslamicMonthName(d = new Date()) {
+        return [,"Muharram", "Safar", "Rabi' al-Awwal", "Rabi' al-Thani",
+                 "Jumada al-Awwal", "Jumada al-Thani", "Rajab", "Sha'ban", 
+                 "Ramadan", "Shawwal", "Dhu al-Qi'dah", "Dhu al-Hijjah"]
+               [d.toLocaleString('en-u-ca-islamic-umalqura', {month: 'numeric'})];
+    }
 
-        function getCurrentHijriDate() {
-            const date = new Date();
-            const weekday = date.toLocaleString('en-u-ca-islamic-umalqura', { weekday: 'long' });
-            const day = date.toLocaleString('en-u-ca-islamic-umalqura', { day: 'numeric' });
-            const month = getIslamicMonthName(date);
-            const year = date.toLocaleString('en-u-ca-islamic-umalqura', { year: 'numeric' });
+    function getCurrentHijriDate() {
+        const weekday = date.toLocaleString('en-u-ca-islamic-umalqura', { weekday: 'long' });
+        const day = date.toLocaleString('en-u-ca-islamic-umalqura', { day: 'numeric' });
+        const month = getIslamicMonthName(date);
+        const year = date.toLocaleString('en-u-ca-islamic-umalqura', { year: 'numeric' });
 
-            return `${weekday}, ${day} ${month} ${year}`;
-        }
+        return `${weekday}, ${day} ${month} ${year}`;
+    }
 
-        document.getElementById("hijri").innerHTML = getCurrentHijriDate();
-                document.getElementById("gregory").innerHTML = date.toLocaleDateString("en-GB", {calendar:'gregory', day:'numeric', month:'long', year:'numeric', era:'short'});
-        
+    // Update Hijri date
+    document.getElementById("hijri").innerHTML = getCurrentHijriDate();
+    // Update Gregorian date
+    document.getElementById("gregory").innerHTML = date.toLocaleDateString("en-GB", {calendar:'gregory', day:'numeric', month:'long', year:'numeric', era:'short'});
+
                 var latitude = document.getElementById("latitude").value; // Set latitude
                 var longitude = document.getElementById("longitude").value; // Set longitude
                 var timezone = document.getElementById("timezone").value; // Set timezone offset
