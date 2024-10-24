@@ -302,7 +302,7 @@
         }
 
         document.getElementById("hijri").innerHTML = getCurrentHijriDate();
-                document.getElementById("gregory").innerHTML = date.toLocaleDateString("en-EG", {calendar:'gregory', day:'numeric', month:'long', year:'numeric', era:'short'});
+                document.getElementById("gregory").innerHTML = date.toLocaleDateString("en-GB", {calendar:'gregory', day:'numeric', month:'long', year:'numeric', era:'short'});
         
                 var latitude = document.getElementById("latitude").value; // Set latitude
                 var longitude = document.getElementById("longitude").value; // Set longitude
