@@ -284,7 +284,24 @@
             var currentDate = new Date(); // Keep track of the current date for the timer
         
             function updateTimes(date) {
-                document.getElementById("hijri").innerHTML = date.toLocaleDateString("en-EG", {calendar:'islamic-umalqura', weekday:'long', day:'numeric', month:'long', year:'numeric'});
+                function getIslamicMonthName(d = new Date()) {
+            return [,"Muharram", "Safar", "Rabi' al-Awwal", "Rabi' al-Thani",
+                     "Jumada al-Awwal", "Jumada al-Thani", "Rajab", "Sha'ban", 
+                     "Ramadan", "Shawwal", "Dhu al-Qi'dah", "Dhu al-Hijjah"]
+                   [d.toLocaleString('en-u-ca-islamic-umalqura', {month: 'numeric'})];
+        }
+
+        function getCurrentHijriDate() {
+            const date = new Date();
+            const weekday = date.toLocaleString('en-u-ca-islamic-umalqura', { weekday: 'long' });
+            const day = date.toLocaleString('en-u-ca-islamic-umalqura', { day: 'numeric' });
+            const month = getIslamicMonthName(date);
+            const year = date.toLocaleString('en-u-ca-islamic-umalqura', { year: 'numeric' });
+
+            return `${weekday}, ${day} ${month} ${year}`;
+        }
+
+        document.getElementById("hijri").innerHTML = getCurrentHijriDate();
                 document.getElementById("gregory").innerHTML = date.toLocaleDateString("en-EG", {calendar:'gregory', day:'numeric', month:'long', year:'numeric', era:'short'});
         
                 var latitude = document.getElementById("latitude").value; // Set latitude
