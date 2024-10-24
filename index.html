@@ -2,169 +2,164 @@
 <html>
     <head>
         <title>PrayTimess</title>
-        <style>
-            body {
-                font-family: 'Arial', sans-serif;
-                background: linear-gradient(to right, #ece9e6, #ffffff);
-                margin: 0;
-                padding: 0;
-            }
-            .gridcontainer {
-                display: grid;
-                grid-template-rows: auto 70px auto;
-                grid-gap: 15px;
-                max-width: 900px;
-                margin: 30px auto;
-                padding: 20px;
-                background-color: #fff;
-                border-radius: 12px;
-                box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
-            }
-            .timercontainer {
-                background-color: #2c3e50; /* Dark grey-blue */
-                color: #fff;
-                padding: 20px;
-                font-size: 24pt;
-                border-radius: 8px;
-                text-align: center;
-                font-weight: bold;
-            }
-            .datescontainer {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                font-size: 24pt;
-                background-color: #f8f9fa;
-                border: 3px solid #34495e; /* Darker grey-blue */
-                border-radius: 8px;
-                padding: 10px;
-            }
-            .dates {
-                flex: 1;
-                text-align: center;
-            }
-            #previous, #next {
-                padding: 10px 20px;
-                font-size: 18pt;
-                background-color: #2980b9; /* Medium blue */
-                color: white;
-                border: 2px solid #444;
-                border-radius: 10px;
-                cursor: pointer;
-                transition: background-color 0.3s ease, transform 0.3s ease;
-                outline: none;
-                font-size: 24pt;
-            }
-            #previous:hover, #next:hover {
-                background-color: #1f6391; /* Darker blue */
-                transform: scale(1.05);
-            }
-            #previous:focus, #next:focus {
-                border: 2px solid #000;
-            }
-            .prayercontainer, .timescontainer {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                grid-gap: 20px;
-                font-size: 22pt;
-                margin-top: 20px;
-            }
-            .prayer, .time {
-                padding: 20px;
-                background-color: #e9ecef;
-                border: 3px solid #adb5bd;
-                border-radius: 8px;
-                text-align: center;
-                font-weight: bold;
-                color: #333;
-            }
-            .sunmooncontainer {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                grid-gap: 20px;
-                text-align: center;
-                padding: 20px;
-                background-color: #f1f3f4;
-                border-radius: 12px;
-                border: 4px solid #34495e;
-                box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
-                margin: 30px auto;
-                max-width: 700px;
-                font-size: 22pt;
-            }
-            .time {
-                font-size: 22pt;
-                font-weight: bold;
-                color: #495057;
-            }
-            .prayer {
-                color: #007bff;
-                font-weight: bold;
-            }
-            .accessible-outline {
-                border: 2px dashed #000;
-            }
-            .inputcontainer {
-                background-color: #fff; /* White background */
-                padding: 20px; /* Padding around the content */
-                border-radius: 12px; /* Increased border-radius for consistency */
-                box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1); /* Match shadow style */
-                width: 100%; /* Full width */
-                max-width: 800px; /* Maximum width */
-                margin: 30px auto; /* Center the container with vertical spacing */
-                font-size: 24pt;
-            }
+        
+            <style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(to right, #ece9e6, #ffffff);
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+    .gridcontainer {
+        display: grid;
+        grid-template-rows: auto 70px auto;
+        grid-gap: 15px;
+        max-width: 90vw; /* Use viewport width */
+        margin: 30px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box; /* Include padding and border in width */
+    }
+    .timercontainer {
+        background-color: #2c3e50;
+        color: #fff;
+        padding: 20px;
+        font-size: 2.5vw; /* Responsive font size */
+        border-radius: 8px;
+        text-align: center;
+        font-weight: bold;
+    }
+    .datescontainer {
+        display: flex;
+        flex-direction: column; /* Stack on small screens */
+        align-items: center;
+        font-size: 2.5vw; /* Responsive font size */
+        background-color: #f8f9fa;
+        border: 3px solid #34495e;
+        border-radius: 8px;
+        padding: 10px;
+    }
+    #previous, #next {
+        padding: 10px 20px;
+        font-size: 2vw; /* Responsive font size */
+        background-color: #2980b9;
+        color: white;
+        border: 2px solid #444;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        outline: none;
+    }
+    #previous:hover, #next:hover {
+        background-color: #1f6391;
+        transform: scale(1.05);
+    }
+    .prayercontainer, .timescontainer {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
+        grid-gap: 20px;
+        font-size: 2.5vw; /* Responsive font size */
+        margin-top: 20px;
+    }
+    .prayer, .time {
+        padding: 20px;
+        background-color: #e9ecef;
+        border: 3px solid #adb5bd;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: bold;
+        color: #333;
+    }
+    .sunmooncontainer {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
+        grid-gap: 20px;
+        text-align: center;
+        padding: 20px;
+        background-color: #f1f3f4;
+        border-radius: 12px;
+        border: 4px solid #34495e;
+        box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+        margin: 30px auto;
+        max-width: 90vw; /* Use viewport width */
+        font-size: 2.5vw; /* Responsive font size */
+    }
+    .accessible-outline {
+        border: 2px dashed #000;
+    }
+    .inputcontainer {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 90vw; /* Use viewport width */
+        margin: 30px auto;
+        font-size: 2.5vw; /* Responsive font size */
+    }
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    .form-row div {
+        flex: 1;
+        min-width: 150px;
+    }
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        font-size: 2vw; /* Responsive font size */
+        color: #333;
+    }
+    input, select, .calc {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-sizing: border-box;
+        font-size: 2vw; /* Responsive font size */
+        color: #495057;
+        background-color: #f8f9fa;
+    }
+    input:focus, select:focus {
+        border-color: #2980b9;
+        outline: none;
+        box-shadow: 0 0 5px rgba(41, 128, 185, 0.5);
+    }
+    .calc {
+        background-color: #2980b9;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 2vw; /* Responsive font size */
+        transition: background-color 0.3s ease;
+    }
+    .calc:hover {
+        background-color: #1f6391;
+    }
 
-            .form-row {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 15px; /* Adjust gap to match other containers */
-                margin-bottom: 20px; /* Increased margin for spacing */
-            }
+    @media (max-width: 600px) {
+        .timercontainer, .datescontainer, .prayercontainer, .sunmooncontainer {
+            font-size: 4vw; /* Adjust for smaller screens */
+        }
+        #previous, #next {
+            font-size: 3vw; /* Adjust for smaller screens */
+        }
+        label {
+            font-size: 3vw; /* Adjust for smaller screens */
+        }
+        input, select, .calc {
+            font-size: 3vw; /* Adjust for smaller screens */
+        }
+    }
+</style>
 
-            .form-row div {
-                flex: 1; /* Flex grow to fill space */
-                min-width: 150px; /* Minimum width for input fields */
-            }
-
-            label {
-                display: block; /* Block display for labels */
-                margin-bottom: 8px; /* Adjust margin for better spacing */
-                font-weight: bold; /* Bold font for labels */
-                font-size: 18pt; /* Font size to match the page */
-                color: #333; /* Darker color for better contrast */
-            }
-
-            input, select, .calc {
-                width: 100%; /* Full width */
-                padding: 12px; /* Increased padding for better usability */
-                border: 1px solid #ccc; /* Border color */
-                border-radius: 8px; /* Match rounded corners */
-                box-sizing: border-box; /* Include padding and border in width */
-                font-size: 18pt; /* Font size for better readability */
-                color: #495057; /* Darker text color */
-                background-color: #f8f9fa; /* Light grey background for inputs */
-            }
-
-           input:focus, select:focus {
-                border-color: #2980b9; /* Change border color on focus */
-                outline: none; /* Remove default outline */
-                box-shadow: 0 0 5px rgba(41, 128, 185, 0.5); /* Subtle shadow on focus */
-            }
-
-            .calc {
-                background-color: #2980b9; /* Button color */
-                color: white; /* Button text color */
-                border: none; /* Remove border */
-                cursor: pointer; /* Pointer cursor */
-                font-size: 18pt; /* Font size for buttons */
-                transition: background-color 0.3s ease; /* Smooth background color transition */
-            }
-
-            .calc:hover {
-                background-color: #1f6391; /* Darker blue on hover */
-            }
-        </style>
         <script src="https://unpkg.com/praytimess"></script>
         <script src="https://unpkg.com/sunmoontimes"></script> 
     </head>
