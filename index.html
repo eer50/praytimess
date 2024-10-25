@@ -148,7 +148,7 @@
         color: #333; 
     }
 
-    input, select, .calc {
+    input, select {
         width: 100%; 
         padding: 16px; /* Increased padding */
         border: 1px solid #ccc; 
@@ -165,6 +165,12 @@
         box-shadow: 0 0 5px rgba(41, 128, 185, 0.5); 
     }
 
+    .calc-container {
+        display: flex;
+        justify-content: center; /* Center the button */
+        margin-top: 20px; /* Space above the button */
+    }
+
     .calc {
         background-color: #2980b9; 
         color: white; 
@@ -173,6 +179,9 @@
         font-size: 22pt; 
         transition: background-color 0.3s ease; 
         padding: 16px; /* Consistent padding */
+        width: 100%; /* Full width */
+        max-width: 300px; /* Set a max-width for the button */
+        border-radius: 8px; /* Match input border-radius */
     }
 
     .calc:hover {
@@ -213,6 +222,7 @@
         }
     }
 </style>
+
 
 
         <script src="https://unpkg.com/praytimess"></script>
@@ -322,10 +332,11 @@
                         <option value="Tehran">Institute of Geophysics, University of Tehran</option>
                         <option value="Jafari">Shia Ithna-Ashari, Leva Institute, Qum</option>
                     </select>
-                </div><br>
-                <div>
-                    <button type="button" class="calc" id="calc">Calculate</button>
                 </div>
+                <div class="calc-container">
+    <button class="calc">Calculate</button>
+</div>
+
             </div>
         </div>
 
