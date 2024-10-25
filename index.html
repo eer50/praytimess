@@ -166,6 +166,46 @@
         </style>
         <script src="https://unpkg.com/praytimess"></script>
         <script src="https://unpkg.com/sunmoontimes"></script> 
+
+        <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#000000">
+
+<script>
+    // Register the service worker
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('data:application/javascript;base64,' + btoa(`
+                self.addEventListener('install', (event) => {
+                    event.waitUntil(
+                        caches.open('age-calculator-cache').then((cache) => {
+                            return cache.addAll([
+                                '/',
+                                '/index.html',
+                                '/style.css',
+                                '/script.js',
+                                '/manifest.json',
+                                'icon-192x192.png',
+                                'icon-512x512.png'
+                            ]);
+                        })
+                    );
+                });
+
+                self.addEventListener('fetch', (event) => {
+                    event.respondWith(
+                        caches.match(event.request).then((response) => {
+                            return response || fetch(event.request);
+                        })
+                    );
+                });
+            `)).then((registration) => {
+                console.log('Service Worker registered with scope:', registration.scope);
+            }).catch((error) => {
+                console.log('Service Worker registration failed:', error);
+            });
+        });
+    }
+</script>
     </head>
     <body>
         <div class="inputcontainer">
