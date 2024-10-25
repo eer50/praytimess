@@ -48,7 +48,7 @@
         text-align: center;
     }
     #previous, #next {
-        padding: 10px 20px;
+        padding: 10px 15px;
         font-size: 22pt;
         background-color: #2980b9;
         color: white;
@@ -57,6 +57,7 @@
         cursor: pointer;
         transition: background-color 0.3s ease, transform 0.3s ease;
         outline: none;
+        flex-shrink: 0; /* Prevents buttons from shrinking */
     }
     #previous:hover, #next:hover {
         background-color: #1f6391;
@@ -110,7 +111,7 @@
     }
     .form-row div {
         flex: 1;
-        min-width: 150px;
+        min-width: 180px; /* Increased minimum width */
     }
     label {
         display: block;
@@ -119,7 +120,7 @@
     }
     input, select, button {
         width: 100%;
-        padding: 10px;
+        padding: 15px; /* Increased padding */
         border: 1px solid #ccc;
         border-radius: 4px;
         box-sizing: border-box;
@@ -172,6 +173,7 @@
         }
     }
 </style>
+
 
 
         <script src="https://unpkg.com/praytimess"></script>
